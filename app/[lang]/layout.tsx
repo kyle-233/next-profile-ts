@@ -1,9 +1,10 @@
 import type { Metadata } from "next"
 import { Nunito } from "next/font/google"
-import "./globals.css"
+import "../globals.css"
 import { cn } from "@/lib/utils"
 import { ThemeProvider } from "@/components/providers/theme-provider"
 import { SiteHeader } from "@/components/layouts/site-header"
+import { dir } from "i18next"
 
 const font = Nunito({ subsets: ["latin"] })
 
@@ -14,11 +15,15 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
+  params: { lang },
 }: Readonly<{
   children: React.ReactNode
+  params: {
+    lang: string
+  }
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang={lang} dir={dir(lang)} suppressHydrationWarning>
       <body className={cn("tracking-wide", font.className)}>
         <ThemeProvider
           attribute="class"
