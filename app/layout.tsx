@@ -2,6 +2,8 @@ import type { Metadata } from "next"
 import { Nunito } from "next/font/google"
 import "./globals.css"
 import { cn } from "@/lib/utils"
+import { ThemeProvider } from "@/components/providers/theme-provider"
+import { SiteHeader } from "@/components/layouts/site-header"
 
 const font = Nunito({ subsets: ["latin"] })
 
@@ -16,8 +18,18 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en">
-      <body className={cn("tracking-wide", font.className)}>{children}</body>
+    <html lang="en" suppressHydrationWarning>
+      <body className={cn("tracking-wide", font.className)}>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <SiteHeader />
+          <main>{children}</main>
+        </ThemeProvider>
+      </body>
     </html>
   )
 }
