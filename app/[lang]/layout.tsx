@@ -32,10 +32,6 @@ export const metadata: Metadata = {
     description: siteConfig.description,
     images: [`${siteConfig.url}/og.jpg`],
   },
-
-  icons: {
-    icon: "/icon.png",
-  },
   manifest: absoluteUrl("/site.webmanifest"),
 }
 

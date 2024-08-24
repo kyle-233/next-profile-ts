@@ -1,3 +1,5 @@
+import { absoluteUrl } from "@/lib/utils"
+
 export type SiteConfig = typeof siteConfig
 
 const links = {
@@ -9,9 +11,9 @@ const links = {
 }
 
 export const siteConfig = {
-  name: "",
-  description: "",
-  url: "",
-  keywords: [],
+  name: "Website name",
+  description: "website description",
+  url: absoluteUrl("/"),
+  keywords: ["keywords"],
   links,
 }
